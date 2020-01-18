@@ -1,0 +1,22 @@
+{
+    "_total" : 10,
+    "articles": [
+        {
+            "sourceid" : 1,
+            "src": "cnn",
+            "title": "Trump shows that impeachment will not moderate him",
+            "description": "(CNN)President Donald Trump is not waiting to be acquitted of impeachable crimes to show that no one can stop him doing what he wants to do.",
+            "url": "https://edition.cnn.com/2020/01/16/politics/donald-trump-impeachment-senate-trial/index.html",
+            "publishedAt": "January 16, 2020"
+        },
+        {
+            "sourceid" : 2,
+            "src": "cnn",
+            "title": "'Staggering number' of human rights defenders killed in Colombia, the UN says",
+            "description": "(CNN)Human rights activists and community leaders in Colombia are being killed at an alarming rate, the United Nations human rights agency warned Tuesday as it urged the government to \"make a strenuous effort\" to prevent attacks on those who are defending fundamental rights.",
+            "url": "https://edition.cnn.com/2020/01/14/americas/staggering-number-of-human-rights-defenders-killed-in-colombia-the-un-says/index.html",
+            "publishedAt": "January 15, 2020"
+        }
+     
+    ]
+}
