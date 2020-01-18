@@ -1,0 +1,21 @@
+version: '3'
+services:
+ mongodb:
+    image: mongo
+#    environment :
+#       - MONGO_INITDB_DATABASE=ssdevdb
+#      - MONGO_INITDB_ROOT_USERNAME=ssdevroot
+#      - MONGO_INITDB_ROOT_PASSWORD=ssdevrootpasswd
+
+    volumes:
+#        - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+        - mongo-data:/data/db
+    ports:
+        - 27017:27017
+    networks:
+           - mongo-network
+            
+volumes:
+  mongo-data:
+networks:
+  mongo-network:
