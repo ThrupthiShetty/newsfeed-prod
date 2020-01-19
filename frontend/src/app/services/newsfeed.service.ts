@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class NewsfeedService {
   rooturl: any;
   constructor(private http: HttpClient) {
-    this.rooturl = "http://localhost:3080"
+    this.rooturl = `http://localhost:3000`
    }
 
    getTopNews(){

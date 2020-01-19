@@ -1,6 +1,9 @@
 /Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/ReactiveService.java
+/Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/news/FeedApplication.java
 /Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/package-info.java
 /Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/GreetingProvider.java
+/Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/news/FeedProvider.java
 /Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/GreetApplication.java
 /Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/Main.java
+/Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/news/FeedResource.java
 /Users/thrupthishetty/Projects/topnewsfeed/newsfeed-prod/java-ms/helidon-quickstart-mp/src/main/java/io/helidon/examples/quickstart/mp/GreetResource.java

@@ -36,8 +36,8 @@ FROM openjdk:8-jre-slim
 WORKDIR /helidon
 
 # Copy the binary built in the 1st stage
-COPY ./target/helidon-quickstart-mp.jar ./
-COPY ./target/libs ./libs
+COPY helidon-quickstart-mp.jar ./
+COPY libs ./libs
 
 CMD ["java", "-jar", "helidon-quickstart-mp.jar"]
 

@@ -13,9 +13,43 @@ services:
     ports:
         - 27017:27017
     networks:
-           - mongo-network
-            
+           - newsfeed-network
+
+ node-api :
+  
+    image: node-ms-api:1.0
+    environment:
+       - mongo_host=mongodb
+       - mongo_port=27017
+       - PORT=3000
+    ports:
+        -  3000:3000
+    depends_on:
+         - mongodb
+    networks:
+          - newsfeed-network
+ java-api:
+    image: java-mp-apis:1.0
+    ports:
+        -  8085:8085
+    depends_on:
+         - mongodb
+         - node-api
+    networks:
+          - newsfeed-network
+ frontend-web-app :
+    image: newsfeed-frontend-ms:latest
+    # environment:
+    #    - mongo_host=mongodb
+    #    - mongo_port=27017
+    ports:
+        -  80:80
+    depends_on:
+         - java-api
+         - node-api 
+    networks:
+          - newsfeed-network
 volumes:
   mongo-data:
 networks:
-  mongo-network:
+  newsfeed-network:

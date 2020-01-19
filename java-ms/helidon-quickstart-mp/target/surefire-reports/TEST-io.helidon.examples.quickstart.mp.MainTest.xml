@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="io.helidon.examples.quickstart.mp.MainTest" time="8.336" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="io.helidon.examples.quickstart.mp.MainTest" time="8.212" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="os.detected.version" value="10.14"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -69,5 +69,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testHelloWorld" classname="io.helidon.examples.quickstart.mp.MainTest" time="0.421"/>
+  <testcase name="testHelloWorld" classname="io.helidon.examples.quickstart.mp.MainTest" time="0.408"/>
 </testsuite>

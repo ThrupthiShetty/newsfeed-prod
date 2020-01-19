@@ -35,7 +35,7 @@ initDatabases().then(dbs => {
   app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
   const port = process.env.PORT || 3080;
   db.collection("newsfeed").drop(function (err, delOK) {
-    if (err) throw err;
+    if (err) console.log(err);
     if (delOK) console.log("Collection deleted");
   });
   request('https://newsapi.org/v2/top-headlines?country=in&apiKey=dd73b96fac8740bbaaa1fb86da64af9b', function (error, response, body) {
@@ -45,7 +45,7 @@ initDatabases().then(dbs => {
       console.log(`added a new doc ${result.result} insertid ${result.insertedId}`);
 
     });;
-    db.collection('newsfeed').createIndex( { description: "text", title: "text" } )
+    db.collection('newsfeed').createIndex({ description: "text", title: "text" })
 
     //console.log(JSON.parse(response))
     //console.log(JSON.parse(body))
@@ -75,20 +75,20 @@ initDatabases().then(dbs => {
 
   app.get('/search/:searchstring', (req, res) => {
     //
-   // db.stores.createIndex({ name: "text", description: "text" })
-  //})
+    // db.stores.createIndex({ name: "text", description: "text" })
+    //})
 
-  db.collection('newsfeed').find( { $text: { $search: req.params.searchstring } } ).limit(100).toArray((err, docs) => {
+    db.collection('newsfeed').find({ $text: { $search: req.params.searchstring } }).limit(100).toArray((err, docs) => {
 
-    // .then(function (result) {
-    //console.log(`added a new doc ${result.result} insertid ${result.insertedId}`);
-    res.json(docs)
-  });
+      // .then(function (result) {
+      //console.log(`added a new doc ${result.result} insertid ${result.insertedId}`);
+      res.json(docs)
+    });
 
-})
+  })
 
 
-const { Builder, By, Key, until } = require('selenium-webdriver');
+  const { Builder, By, Key, until } = require('selenium-webdriver');
 
   // (async function example() {
   //   let driver = await new Builder().forBrowser('chrome').build();

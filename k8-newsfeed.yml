@@ -1,0 +1,144 @@
+#https://medium.com/@dilipkumar/standalone-mongodb-on-kubernetes-cluster-19e7b5896b27
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+spec:
+  serviceName: database
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodatabase
+  template:
+    metadata:
+      labels:
+        app: mongodatabase
+        selector: mongodatabase
+    spec:
+      containers:
+      - name: mongodb-pod
+        image: mongo
+        ports:
+          - containerPort: 27017
+        resources:
+           limits:
+              cpu : "100m"
+              memory: "500Mi"
+           requests:
+             cpu : "100m"
+             memory: "500Mi"
+
+        # env:
+        #   - name: MONGO_INITDB_ROOT_USERNAME
+        #     value: admin
+        #   - name: MONGO_INITDB_ROOT_PASSWORD
+        #     value: password
+      # nodeSelector:
+      #   kubernetes.io/hostname: mongodb-node
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-database
+  labels:
+    app: mongo-database
+spec:
+  clusterIP: None
+  selector:
+    app: mongodatabase
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+---
+#https://dev.to/kaoskater08/building-a-headless-service-in-kubernetes-3bk8
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-api-deployment
+  labels:
+    app: node-ms-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-ms-api
+  template:
+    metadata:
+      labels:
+        app: node-ms-api
+    spec:
+      containers:
+      - name: node-ms-api-pod
+        image: node-ms-api:1.0
+        ports:
+          - containerPort: 3000
+        resources:
+          limits:
+              cpu : "100m"
+              memory: "500Mi"
+          requests:
+              cpu : "100m"
+              memory: "100Mi"
+        env:
+         - name: mongo_host
+           value: "mongo-database"
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nodeapi-headleass-service
+# spec:
+#   clusterIP: None # <-- Don't forget!!
+#   selector:
+#     app: node-ms-api
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 3000
+---
+#https://dev.to/kaoskater08/building-a-headless-service-in-kubernetes-3bk8
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-api-deployment
+  labels:
+    app: java-ms-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-ms-api
+  template:
+    metadata:
+      labels:
+        app: java-ms-api
+    spec:
+      containers:
+      - name: java-ms-api-pod
+        image: thrupthishetty/newsfeedapp:java-ms-2.0
+        ports:
+          - containerPort: 8085
+        resources:
+          limits:
+              cpu : "100m"
+              memory: "500Mi"
+          requests:
+              cpu : "100m"
+              memory: "100Mi"
+        env:
+         - name: mongo_host
+           value: "mongo-database"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: javaapi-lb-service
+spec:
+  type: NodePort # <-- Don't forget!!
+  selector:
+    app: java-ms-api
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085
