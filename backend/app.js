@@ -6,6 +6,8 @@ var cors = require('cors')
 const dotenv = require('dotenv');
 dotenv.config();
 const initDatabases = require('./dbs');
+const { Builder, By, Key, until } = require('selenium-webdriver');
+
 initDatabases().then(dbs => {
 
   console.log("connected to mongo db");
@@ -63,7 +65,7 @@ initDatabases().then(dbs => {
   })
 
   app.get('/topnews', (req, res) => {
-    console.log("jjjjj")
+    console.log("get top news")
     db.collection('newsfeed').find({}).limit(100).toArray((err, docs) => {
 
       // .then(function (result) {
@@ -87,18 +89,26 @@ initDatabases().then(dbs => {
 
   })
 
+  app.get('/seleniumtest/:userinput', (req, res) => {
+  console.log("selenium test");
+    (async function example() {
+      let driver = await new Builder().forBrowser('chrome').build();
+      try {
+        await driver.get('http://localhost:4200/');
+        setTimeout(function() {
+          // Whatever you want to do after the wait
+      }, 3000);
+     //  await  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        await driver.findElement(By.id('searchInput')).sendKeys(req.params.userinput, Key.RETURN);
+       // await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+       (await driver.findElement(By.id('searchButton'))).click();
 
-  const { Builder, By, Key, until } = require('selenium-webdriver');
+      } finally {
+        //await driver.quit();
+      }
+    })();
 
-  // (async function example() {
-  //   let driver = await new Builder().forBrowser('chrome').build();
-  //   try {
-  //     await driver.get('http://www.google.com/ncr');
-  //     await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-  //    // await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-  //   } finally {
-  //     //await driver.quit();
-  //   }
-  // })();
+  })
+  
 
 });

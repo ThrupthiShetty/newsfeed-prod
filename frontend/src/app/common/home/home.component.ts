@@ -21,4 +21,22 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  getnewsfeed(searchitem){
+    this.newService.getTopNewsByItem(searchitem)
+    .subscribe(news => {
+      this.topnews = news;
+ //     this.arrayLength  = news.articles.length;
+      console.log(this.topnews)
+    });
+
+
+  }
+  home(){
+    this.newService.getTopNews()
+    .subscribe(news => {
+      this.topnews = news;
+ //     this.arrayLength  = news.articles.length;
+      console.log(this.topnews)
+    });  }
+
 }

@@ -1,52 +1,55 @@
-<div style="width: 100%; margin: 20px;">
+<div style="width: 100%; margin: 10px;">
     <div class="search-bar">
-        <mat-icon>search</mat-icon>
-        <input type="text"  placeholder="Search" [(ngModel)]="search">
+       
+        <input  type="text"  placeholder="Search" [(ngModel)]="search" id="searchInput">
+        <button mat-button (click)="getnewsfeed(search)" id="searchButton"> <mat-icon>search</mat-icon></button>
+        <h4 style="float: right; margin: 10px; cursor: pointer;" (click)="home()" id="home">Home</h4>
     </div>
+    <div>
+      
+    </div>
+   
 </div>
-<div class="left-side">
-    <h2>Top News Feed</h2>
-
-    <div class="description">
-        <p>
-               Get all the top news feeds here.
-        </p>
-
-        <p>
-            <!-- Here's a <a href="https://shotstories.co/#india" target="_blank">word</a> on India. -->
-        </p>
-    </div>
-
-    <!-- <app-categories [selectedCategory]="category" (select)="selectCategory($event)"></app-categories> -->
-</div>
-
-<div class="right-side">
-    <div class="row top-part">
-        <div class="col-4">
-            <!-- <app-top-filters></app-top-filters> -->
-          
+<div>
+    <div class="left-side">
+        <h2>Top News Feed</h2>
+    
+        <div class="description">
+            <p>
+                   Get all the top news feeds here.
+            </p>
+    
+            <p>
+                <!-- Here's a <a href="https://shotstories.co/#india" target="_blank">word</a> on India. -->
+            </p>
         </div>
-        <div class="col-8 text-right">
-            <!-- <app-nav></app-nav> -->
-        </div>
+    
+        <!-- <app-categories [selectedCategory]="category" (select)="selectCategory($event)"></app-categories> -->
     </div>
-    <div class="images">
-        <div class="masonry" >
-            <div class="brick" *ngFor="let news of topnews"  >
-                <!-- <img [src]="image.url" (click)="viewImage(image)"> -->
-               <mat-card>
-               <h4>{{ news.title}}</h4>
-               <img [src]="news.urlToImage">
-               <p>{{news.content}}</p>
-               <a [href]="news.url" target="_blank">Click here</a>
-               </mat-card>
+    
+    <div class="right-side">
+ 
+        <div class="images">
+            <div class="masonry" >
+                <div class="brick" *ngFor="let news of topnews"  >
+                    <!-- <img [src]="image.url" (click)="viewImage(image)"> -->
+                  <mat-card>
+                    <h4>{{ news.title}}</h4>
+                    <img [src]="news.urlToImage">
+                    <p>{{news.content}}</p>
+                    <a [href]="news.url" target="_blank">Click here</a>
+                  </mat-card>
+                  
+                </div>
             </div>
         </div>
+    <!--     
+        <ng-template #nonews>
+        </ng-template> -->
     </div>
-<!--     
-    <ng-template #nonews>
-    </ng-template> -->
+    
 </div>
+
 
 
 <!-- <div [class.hidden]="!show" class="spinner_container">
